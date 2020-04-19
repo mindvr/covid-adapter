@@ -55,7 +55,7 @@ def write_lines(name, lines):
 
 
 if __name__ == '__main__':
-    filename = sys.argv[1]
+    filename = "data/source.txt"
     lines = clean(readfile(filename))
     parse_result = parse_lines(lines)
     dates = get_dates(parse_result)
@@ -73,4 +73,4 @@ if __name__ == '__main__':
             else:
                 row += '0'
         result.append(row)
-    write_lines(sys.argv[2], result)
+    write_lines("data/output.csv", result)
