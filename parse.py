@@ -1,5 +1,12 @@
 import sys
 import re
+import argparse 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--transpose', action='store_true')
+parser.add_argument('--stdout', action='store_true')
+parser.add_argument('--output', action='store', default='data/output.csv')
+parser.add_argument('input_file', nargs='?', default='data/source.txt')
 
 dateFormat = re.compile('\d\d\.\d\d\.\d\d')
 regionFormat = re.compile('🔸.*-')
@@ -55,8 +62,8 @@ def write_lines(name, lines):
 
 
 if __name__ == '__main__':
-    filename = "data/source.txt"
-    lines = clean(readfile(filename))
+    args = parser.parse_args()
+    lines = clean(readfile(args.input_file))
     parse_result = parse_lines(lines)
     dates = get_dates(parse_result)
     result = []
