@@ -15,7 +15,7 @@ class Measure:
 
 dateFormat = re.compile(r'\d\d\.\d\d\.\d\d')
 regionFormat = re.compile(r'🔸.*-')
-regionCountExtractor = re.compile(r'\d+$')
+regionCountExtractor = re.compile(r'\d+\s*$')
 
 
 def is_region_line(line):

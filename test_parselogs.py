@@ -20,8 +20,11 @@ class ParselogsTest(unittest.TestCase):
         self.assertEqual('Московская область', region)
         self.assertEqual(460, count)
         # issue #4
-        (region, count) = get_region_count('🔸Московская область -460')
+        count = get_region_count('🔸Московская область -460')[1]
         self.assertEqual(460, count)
+        # issue 4 with hanging space
+        count = get_region_count('🔸Ставропольский край -3 ')[1]
+        self.assertEqual(count, 3)
 
     def test_parselogs(self):
         parse_result = parselogs('data/test.txt')
