@@ -1,5 +1,5 @@
 import unittest
-from writedata import *
+from writedata import Value, get_rows
 
 test_data = [Value('2020-04-15', 'Москва', 1355), Value('2020-04-15', 'Волгоградская область', 6),
              Value('2020-04-13', 'Москва', 1489), Value('2020-04-13', 'Московская область', 460)]
@@ -14,5 +14,4 @@ class WritedataTest(unittest.TestCase):
             ['Московская область', 460, 0]
         ]
         got = get_rows(test_data)
-        print(got)
         self.assertEqual(got, expected)
