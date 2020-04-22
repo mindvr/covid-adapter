@@ -1,3 +1,5 @@
+import csv
+
 class Value:
     def __init__(self, keyA, keyB, count):
         self.keyA = keyA
@@ -45,6 +47,10 @@ def get_rows(data):
         rows.append(get_row_with_header(row, row_key))
     return rows
 
-def writedata(data, transpose, filename):
-    return
+def writedata(data, filename):
+    with open(filename, 'w', newline='') as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter='\t',
+                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        spamwriter.writerows(get_rows(data))
+
 
