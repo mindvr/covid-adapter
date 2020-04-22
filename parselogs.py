@@ -14,7 +14,8 @@ class Measure:
         return False
 
 dateFormat = re.compile(r'\d\d\.\d\d\.\d\d')
-regionFormat = re.compile('🔸.*-')
+regionFormat = re.compile(r'🔸.*-')
+regionCountExtractor = re.compile(r'\d+$')
 
 
 def is_region_line(line):
@@ -29,9 +30,9 @@ def get_date(line):
     return date.isoformat()
 
 def get_region_count(line):
-    tokens = line.split()
+    # tokens = line.split()
     region = regionFormat.findall(line)[0][1:-1].strip()
-    count = int(tokens[-1])
+    count = int(regionCountExtractor.findall(line)[0])
     return (region, count)  
 
 def parse_lines(lines):

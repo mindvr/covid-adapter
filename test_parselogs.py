@@ -1,5 +1,5 @@
 import unittest
-from parselogs import *
+from parselogs import Measure, is_region_line, is_date_line, get_date, get_region_count, parselogs
 
 class ParselogsTest(unittest.TestCase):
     def test_is_region_line(self):
@@ -15,9 +15,12 @@ class ParselogsTest(unittest.TestCase):
     def test_get_date(self):
         self.assertEqual('2020-04-13', get_date('Stepan Kuznetsov, [13.04.20 12:21]'))
 
-    def test_get_regin_and_count(self):
+    def test_get_region_and_count(self):
         (region, count) = get_region_count('🔸Московская область - 460')
         self.assertEqual('Московская область', region)
+        self.assertEqual(460, count)
+        # issue #4
+        (region, count) = get_region_count('🔸Московская область -460')
         self.assertEqual(460, count)
 
     def test_parselogs(self):
