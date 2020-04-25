@@ -51,3 +51,10 @@ def parselogs(name):
     lines = file.readlines()
     file.close()
     return parse_lines(lines)
+
+if __name__ == "__main__":
+    parse_result = parselogs("data/source.txt")
+    foo = {}
+    for x in [v for v in parse_result if v.date == '2020-04-25']:
+        foo[x.city] = x.count
+    print(foo)
