@@ -49,8 +49,8 @@ def get_rows(data):
 
 def writedata(data, filename):
     with open(filename, 'w', newline='') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter='\t',
+        writer = csv.writer(csvfile, delimiter='\t',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        spamwriter.writerows(get_rows(data))
+        writer.writerows(get_rows(data))
 
 
