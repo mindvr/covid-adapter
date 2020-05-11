@@ -14,7 +14,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     logs = parselogs(args.input_file)
     if args.transpose:
-        values = [Value(m.city, m.date, m.count) for m in logs]
-    else:
         values = [Value(m.date, m.city, m.count) for m in logs]
+    else:
+        values = [Value(m.city, m.date, m.count) for m in logs]
     writedata(values, args.output)
